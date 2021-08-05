@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const request = require('request');
 const https = require('https');
@@ -33,7 +34,7 @@ app.post('/', (req, res) => {
 
     const options = {
         method: 'POST',
-        auth: 'joeytharpe1:fabd6fdd52212478b800870262e00cba-us5'
+        auth: `joeytharpe1:${process.env.apiKey}`
     }
 
     const request = https.request(url, options, (response) => {
@@ -61,5 +62,3 @@ app.listen(process.env.PORT || 3000, () => {
     console.log(`server running on port 3000`)
 })
 
-// apiKey=fabd6fdd52212478b800870262e00cba-us5
-//listId = c244efe37e
